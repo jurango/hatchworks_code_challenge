@@ -13,7 +13,11 @@ protocol NetworkServiceProtocol {
 
 class NetworkService: NetworkServiceProtocol {
     private let baseURL = "https://rickandmortyapi.com/api"
-    private let urlSession = URLSession.shared
+    private let urlSession: URLSession
+
+    init(urlSession: URLSession = .shared) {
+        self.urlSession = urlSession
+    }
     
     func fetchCharacters(page: Int?) async throws -> CharacterResponse {
         var urlString = "\(baseURL)/character"

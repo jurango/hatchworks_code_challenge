@@ -16,15 +16,17 @@ struct CharacterListView: View {
                 if viewModel.characters.isEmpty && viewModel.isLoading {
                     ProgressView("Loading characters...")
                 } else {
-                    List(viewModel.characters) { character in
-                        NavigationLink(destination: CharacterDetailView(viewModel: CharacterDetailViewModel(character: character))) {
-                            CharacterRowView(character: character)
-                        }
-                        .listRowBackground(Color.clear)
-                        .onAppear {
-                            if character.id == viewModel.characters.last?.id {
-                                Task {
-                                    await viewModel.loadMoreCharacters()
+                    List {
+                        ForEach(viewModel.characters) { character in
+                            NavigationLink(destination: CharacterDetailView(viewModel: CharacterDetailViewModel(character: character))) {
+                                CharacterRowView(character: character)
+                            }
+                            .listRowBackground(Color.clear)
+                            .onAppear {
+                                if character.id == viewModel.characters.last?.id {
+                                    Task {
+                                        await viewModel.loadMoreCharacters()
+                                    }
                                 }
                             }
                         }

@@ -5,7 +5,7 @@
 //  Created by Juan Pablo Urango Vitola on 2/10/25.
 //
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case invalidURL
     case invalidResponse
     case decodingError
