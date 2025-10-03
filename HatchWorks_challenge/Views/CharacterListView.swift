@@ -21,6 +21,22 @@ struct CharacterListView: View {
                             CharacterRowView(character: character)
                         }
                         .listRowBackground(Color.clear)
+                        .onAppear {
+                            if character.id == viewModel.characters.last?.id {
+                                Task {
+                                    await viewModel.loadMoreCharacters()
+                                }
+                            }
+                        }
+                        
+                        if viewModel.isLoadingMore {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
+                            .listRowBackground(Color.clear)
+                        }
                     }
                     .refreshable {
                         Task {

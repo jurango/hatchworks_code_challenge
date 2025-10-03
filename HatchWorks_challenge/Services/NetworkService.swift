@@ -7,7 +7,7 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func fetchCharacters() async throws -> CharacterResponse
+    func fetchCharacters(page: Int?) async throws -> CharacterResponse
     func fetchEpisodes(ids: [Int]) async throws -> [Episode]
 }
 
@@ -15,8 +15,13 @@ class NetworkService: NetworkServiceProtocol {
     private let baseURL = "https://rickandmortyapi.com/api"
     private let urlSession = URLSession.shared
     
-    func fetchCharacters() async throws -> CharacterResponse {
-        guard let url = URL(string: "\(baseURL)/character") else {
+    func fetchCharacters(page: Int?) async throws -> CharacterResponse {
+        var urlString = "\(baseURL)/character"
+        if let page = page {
+            urlString += "?page=\(page)"
+        }
+        
+        guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
         }
         

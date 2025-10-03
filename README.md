@@ -2,7 +2,7 @@
 
 A native iOS application built with SwiftUI that displays characters from the Rick and Morty universe using the [Rick and Morty API](https://rickandmortyapi.com/).
 
-## 📱 Features
+## Features
 
 - **Character List**: Browse all Rick and Morty characters with circular avatars, status indicators, and species information
 - **Character Details**: View detailed information including species, gender, origin, location, and episode appearances
@@ -10,7 +10,7 @@ A native iOS application built with SwiftUI that displays characters from the Ri
 - **Dark Mode Support**: Fully supports iOS light and dark modes
 - **Modern UI**: Clean, iOS-native design
 
-## 🏗 Architecture
+## Architecture
 
 This project follows the **MVVM (Model-View-ViewModel)** architecture pattern with clean separation of concerns.
 
@@ -44,7 +44,7 @@ HatchWorks_challenge/
 	HatchWorks_challengeApp.swift # App entry point
 ```
 
-## 🌐 API Integration
+## API Integration
 
 The app consumes the free [Rick and Morty API](https://rickandmortyapi.com/) (no authentication required).
 
@@ -107,7 +107,7 @@ Fetches multiple episodes using comma-separated IDs (e.g., `/api/episode/1,2,3`)
 ]
 ```
 
-## 📐 Models
+## Models
 
 ### Character Model
 ```swift
@@ -148,7 +148,7 @@ struct Episode: Codable, Identifiable {
 - **PageInfo**: Contains `count`, `pages`, `next`, `prev` for pagination
 - **CharacterResponse**: Wrapper containing `info` (PageInfo) and `results` ([Character])
 
-## 🎨 Design Decisions
+## Design Decisions
 
 ### MVVM Architecture
 - **Models**: Pure data structures conforming to `Codable` and `Identifiable`
@@ -176,7 +176,7 @@ struct Episode: Codable, Identifiable {
 - **Computed Properties**: `episodesIds` extracts IDs from episode URLs
 - **CodingKeys**: Maps `air_date` to `airDate` for Swift naming conventions
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -194,14 +194,14 @@ struct Episode: Codable, Identifiable {
 3. Select a simulator from the scheme selector at the top (e.g., iPhone 15 Pro)
 4. Press `Cmd + R` or click the Play button to build and run the app
 
-## 📄 License
+## License
 
 This project was created as a coding challenge and uses the free [Rick and Morty API](https://rickandmortyapi.com/).
 
-## 👨‍💻 Author
+## Author
 
 Created by Juan Pablo Urango Vitola
 
-## 🔗 Repository
+## Repository
 
 [https://github.com/jurango/hatchworks_code_challenge](https://github.com/jurango/hatchworks_code_challenge)
